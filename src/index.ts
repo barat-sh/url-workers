@@ -1,9 +1,14 @@
 import { Hono } from 'hono'
 
-const app = new Hono<{ Bindings: CloudflareBindings }>()
+import crudRoute from './controller/crudController'
+import { Bindings } from 'hono/types';
 
-app.get('/', (c) => {
-  return c.text('Hello Hono!')
+const app = new Hono<{ Bindings: Bindings }>()
+
+app.route("/api/v1", crudRoute);
+
+app.get("/", (c) => {
+    return c.json({message: "URL workers"})
 })
 
 export default app
