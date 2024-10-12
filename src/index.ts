@@ -9,8 +9,8 @@ const app = new Hono<{ Bindings: Bindings }>()
 app.use('*', cors({
     origin: '*',
     allowMethods: ['GET', 'POST', 'OPTIONS'],
-    allowHeaders: ['Content-Type']
-  }));
+    allowHeaders: ['Content-Type', 'Authorization']
+}));
 
 app.route("/api/v1", crudRoute);
 
